@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/sms', (req, res) => {
+app.get('/api/sms', (req, res) => {
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
   " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
