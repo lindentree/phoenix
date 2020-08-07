@@ -1,6 +1,4 @@
-//What does this do?
-//Replying to the SMS number I have will route up to the server and
-//will pull out a response that I can see on my phone.
+//To see it work, run "node server.js" and go to http://localhost:3000/sms
 
 //Message Alexa on discord for the accountSid and authToken
 const accountSid = "";
@@ -14,10 +12,14 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 
 app.get('/sms', (req, res) => {
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
-  " soon be getting a message about the Kessel Run.")
+  " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
     //Change the to: "+----------" to your own phone number. Keep the same formatting of
     //[+][country code][phone number including area code]
@@ -37,6 +39,7 @@ app.get('/sms', (req, res) => {
 // To get this functionality, you need to run this server
 // And then say this command: twilio phone-numbers:update "+15017122661" --sms-url="http://localhost:3000/sms"
 // And update the phone number above into the one that you're using
+// And then finally reply to the number that the twilio message came from
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
 
