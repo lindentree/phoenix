@@ -6,8 +6,9 @@ const PORT = 3000;
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
-console.log(accountSid, authToken)
+console.log(accountSid, authToken, twilioPhoneNumber)
 const client = require('twilio')(accountSid, authToken);
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
@@ -48,6 +49,6 @@ app.post('/api/sms', (req, res) => {
 });
 
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 })
