@@ -1,0 +1,30 @@
+
+ [
+   {
+    "name":"Naree Help",
+    "address":"Bikaner",
+    "miles":"2 miles",
+    "contact":220404,
+    "lat":37642768,
+    "long":6327648
+    },
+    
+    {
+        "name":"Shero",
+        "address":"New York",
+        "miles":"4 miles",
+        "contact":2241297,
+        "lat":37642768,
+        "long":6327648
+        
+    },
+    {
+        "name":"Safe Horizon",
+        "address":"Brooklyn",
+        "miles":"6 miles",
+        "contact": 18007997233,
+        "lat":37642768,
+    "long":6327648
+    }
+
+ ]
