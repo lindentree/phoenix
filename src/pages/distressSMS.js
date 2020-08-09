@@ -5,12 +5,13 @@ import axios from "axios";
 const DistressSMS = () => {
 
     const { register, handleSubmit, errors } = useForm();
+
     const onSubmit = data => {
         
-        console.log(data);
-
-
-        axios.get('/api/sms', data)
+        axios.post('http://localhost:3000/api/sms', {
+           mobile_number: data.mobile_number 
+    
+        })
           .then(function (response) {
             console.log(response);
           })

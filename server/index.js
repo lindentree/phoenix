@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -56,6 +57,8 @@ app.use(
   })
 )
 
+app.use(cors());
+
 
 app.get('/', (req, res) => {
   res.send('Hello World! change the URL to hopefully see some json info.')
@@ -63,9 +66,9 @@ app.get('/', (req, res) => {
 
 })
 
-app.get('/api/sms', (req, res) => {
+app.post('/api/sms', cors(), (req, res) => {
 
-  console.log('REQUEST', req.body)
+  const to_number = '+1' + req.body.params.mobile_number
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
   " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
@@ -77,7 +80,7 @@ app.get('/api/sms', (req, res) => {
          body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
          from: twilioPhoneNumber,
          //Edit number here
-         to: req.body.mobile_number
+         to: to_number
        })
       .then(message => console.log(message.sid));
 })
@@ -87,14 +90,14 @@ app.get('/api/sms', (req, res) => {
 // To get this functionality, you need to run this server
 // And then run this command: twilio phone-numbers:update "+15017122661" --sms-url="http://localhost:3000/api/sms"
 
-app.post('/api/sms', (req, res) => {
-  const twiml = new MessagingResponse();
+// app.post('/api/sms', (req, res) => {
+//   const twiml = new MessagingResponse();
 
-  twiml.message('The Robots are coming! Head for the hills!');
+//   twiml.message('The Robots are coming! Head for the hills!');
 
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
-});
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
+// });
 
 
 app.listen(PORT, () => {
