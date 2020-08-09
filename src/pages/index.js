@@ -33,7 +33,7 @@ export default function Home() {
   <Card className="border-0">
     <Card.Img variant="top" src="https://dummyimage.com/100x100/8f888f/fff" />
     <Card.Body>
-      <Card.Title > <Button variant="primary" size="lg">Emergency Contacts</Button></Card.Title>
+      <Card.Title > <Button variant="primary" href="distressSMS" size="lg">Emergency Contacts</Button></Card.Title>
       <Card.Text >
       When you create emergency contacts with us, your contacts will be immediately notified that you are in need of help the moment you log-in. 
       <div>
@@ -52,7 +52,7 @@ export default function Home() {
   <Card className="border-0">
     <Card.Body className="instructioncards">
       <Card.Text>
-      Select the button the top right hand corner to hide this page. We recommend using this site in incongnito mode.
+      Select the button in the top right hand corner to hide this page. We recommend using this site in incognito mode.
     <img  className="ml-5" src="https://dummyimage.com/100x100/8f888f/fff"></img>
     </Card.Text>
 

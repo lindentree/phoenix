@@ -1,15 +1,19 @@
 import React,{ useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import  'bootstrap/dist/css/bootstrap.min.css';
 
 const DistressSMS = () => {
 
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => {
-        
-        axios.post('http://localhost:3000/api/sms', {
-           mobile_number: data.mobile_number 
+        console.log("sanity", data.mobile_number )
+        axios.post('http://198.211.108.53:5000/api/sms', {
+          params: {
+            mobile_number: data.mobile_number 
+          }
+           
     
         })
           .then(function (response) {
