@@ -1,20 +1,54 @@
-//http://localhost:3000/
+require('dotenv').config();
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const db = require('./queries')
+const express = require('express');
+const app = express();
+const PORT = 3000;
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-const accountSid = "";
-const authToken = "";
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
+
+
 const client = require('twilio')(accountSid, authToken);
 
-
-const http = require('http');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
-const app = express()
-const port = 3000
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 
+
+// Configure Passport to use Auth0
+const strategy = new Auth0Strategy(
+  {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:
+      process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+  },
+  function (accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  }
+);
+
+passport.use(strategy);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 
 app.use(bodyParser.json())
 app.use(
@@ -23,6 +57,8 @@ app.use(
   })
 )
 
+app.use(cors());
+
 
 app.get('/', (req, res) => {
   res.send('Hello World! change the URL to hopefully see some json info.')
@@ -30,23 +66,9 @@ app.get('/', (req, res) => {
 
 })
 
+app.post('/api/sms', cors(), (req, res) => {
 
-app.get('/users', db.getUsers)
-app.get('/users/:id', db.getUserById)
-app.post('/users', db.createUser)
-app.put('/users/:id', db.updateUser)
-app.delete('/users/:id', db.deleteUser)
-
-
-
-
-app.listen(port, () => {
-  console.log('Example app listening at http://localhost:${port}')
-})
-
-
-
-app.get('/api/sms', (req, res) => {
+  const to_number = '+1' + req.body.params.mobile_number
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
   " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
@@ -56,9 +78,9 @@ app.get('/api/sms', (req, res) => {
     client.messages
       .create({
          body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-         from: '+16105954686',
+         from: twilioPhoneNumber,
          //Edit number here
-         to: '+----------'
+         to: to_number
        })
       .then(message => console.log(message.sid));
 })
@@ -66,18 +88,18 @@ app.get('/api/sms', (req, res) => {
 
 //This only works if you have twilio CLI installed (need a twilio account)
 // To get this functionality, you need to run this server
-// And then say this command: twilio phone-numbers:update "+15017122661" --sms-url="http://localhost:3000/sms"
-// And update the phone number above into the one that you're using
-// And then finally reply to the number that the twilio message came from
-app.post('/api/sms', (req, res) => {
-  const twiml = new MessagingResponse();
+// And then run this command: twilio phone-numbers:update "+15017122661" --sms-url="http://localhost:3000/api/sms"
 
-  twiml.message('The Robots are coming! Head for the hills!');
+// app.post('/api/sms', (req, res) => {
+//   const twiml = new MessagingResponse();
 
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
-});
+//   twiml.message('The Robots are coming! Head for the hills!');
 
-//http.createServer(app).listen(3000, () => {
-//  console.log('Express server listening on port 3000');
-//});
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
+// });
+
+
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
+})
