@@ -68,7 +68,9 @@ app.get('/', (req, res) => {
 
 app.post('/api/sms', cors(), (req, res) => {
 
-  const to_number = '+1' + req.body.params.mobile_number
+  const to_number = '+1' + req.body.params.mobile_number;
+
+  const codeword = req.body.params.codeword;
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
   " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
@@ -77,7 +79,7 @@ app.post('/api/sms', cors(), (req, res) => {
 
     client.messages
       .create({
-         body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+         body: codeword,
          from: twilioPhoneNumber,
          //Edit number here
          to: to_number

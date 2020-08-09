@@ -11,7 +11,8 @@ const DistressSMS = () => {
         console.log("sanity", data.mobile_number )
         axios.post('http://198.211.108.53:5000/api/sms', {
           params: {
-            mobile_number: data.mobile_number 
+            mobile_number: data.mobile_number,
+            codeword: data.codeword 
           }
            
     
@@ -30,9 +31,9 @@ const DistressSMS = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
     
       <input type="tel" placeholder="Mobile number" name="mobile_number" ref={register({required: true, minLength: 6, maxLength: 12})} />
-  
-      <input name="Developer" type="radio" value="Yes" ref={register({ required: true })}/>
-      <input name="Developer" type="radio" value="No" ref={register({ required: true })}/>
+
+      <input type="text" placeholder="Codeword" name="codeword" ref={register({required: true})} />
+
 
       <input type="submit" />
     </form>
