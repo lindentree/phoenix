@@ -1,0 +1,60 @@
+.layout{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.card-left{
+    padding: 150px;
+}
+ .card-right{
+     margin-top: 150px;
+     width: 100vw;
+    padding: 10px;
+}
+
+.imgstyle{
+    display: block;
+    margin: 50px auto;
+
+}
+
+.mobiletext{
+    display: none;
+}
+
+@media(max-width: 900px) {
+ 
+    
+    .layout{
+        display: block;
+        text-align: justify;
+    }
+    .card-left{
+        padding: 10px;
+        
+    }
+     .card-right{
+         width: auto;
+        padding: 10px;
+        margin-top: 90px;
+        margin-bottom: 50px;
+        border-bottom:  1px gray solid;
+    }
+    .webtext{
+        display: none;
+    }
+ .mobiletext{
+     display: flex;
+     flex-direction: row;
+     margin-top:10px;
+     align-items: center;
+     justify-content: center;
+ }
+ .mobiletext p{
+    margin-left:10px;
+ }
+ .mobiletext Button{ 
+    width: 50vw;
+ }
+
+
+}

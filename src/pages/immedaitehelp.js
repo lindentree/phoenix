@@ -1,6 +1,6 @@
 import React from "react";
 import  'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Table, Button}  from 'react-bootstrap';
+import {Container,Table, Button, Card}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
 import data from '../../shelteinfo.json';
 import  '../../static/css/immediate.css';
@@ -20,6 +20,7 @@ class immediate extends React.Component{
         this.getCoordinates = this.getCoordinates.bind(this);
         this.getDistanceFromLatLonInKm = this.getDistanceFromLatLonInKm.bind(this);
         this.deg2rad = this.deg2rad.bind(this);
+       
     }
     getLocation() {
         if (navigator.geolocation) {
@@ -53,7 +54,7 @@ class immediate extends React.Component{
         var d = R * c; // Distance in km
         return Math.floor(d* 0.62137);
       }
-      
+     
      
 
     handleError(error) {
@@ -84,18 +85,36 @@ class immediate extends React.Component{
     {/* Home page contents */}
     <div>
     <Container > 
-      <p className="mt-5 mb-5 text-center" >
-        Disclaimer: In case of an emergency, please call 911 immediately. This site does not replace emergency services.
-      </p>
+      
       <div>
           <h2 className="text-center mt-5 mb-5">Immediate Help</h2>
           <h4 className="text-center mt-5 mb-5">Please call 911 immediately if this is an emergency</h4>
           <div>
-              <div className="buttonc mt-5 mb-5"> 
-                <Button className=" mr-5" onClick={this.getLocation}>Get My get Location</Button>
-              <Button variant="primary" >Search Organisation </Button>
+              <div className=" buttongroup mt-5 mb-5"> 
+                <Button className="button" onClick={this.getLocation}>Get My get Location</Button>
+              <Button variant="primary"  >Search Organisation </Button>
               </div>
               <div>
+                <div className="organisationcards">
+                {data.map( data => {
+                        return(
+                            <Card className="p-1 card text-left">
+                            <Card.Title> 
+                           < span className="title">{data.name}</ span> 
+                            <span className="cardtext">
+                              {this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.lat,data.long)} m</span>
+                              </Card.Title>
+                             <Card.Body className="p-0">
+                               <p>{data.address}</p>
+                               <p><a href="#">Get Directions</a> <span className="cardnum">  {data.contact}</span></p>
+                            <p></p>
+                            
+                            </Card.Body>
+                            </Card>
+                        )
+                    })}
+                </div>
+            
               <Table striped bordered hover size="sm">
         
                 <thead>
@@ -113,7 +132,8 @@ class immediate extends React.Component{
                             <td>{data.name}</td>
                              <td>{data.address}</td>
                             <td>{data.contact}</td>
-                            <td>{this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.lat,data.long)}</td>
+                            <td >{this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.lat,data.long)}</td>
+                            
                             </tr>
                         )
                     })}
@@ -121,9 +141,6 @@ class immediate extends React.Component{
                 </tbody>
                 </Table>
               </div>
-              
-              <p>{this.state.latitude}</p>
-              <p>{this.state.longitude}</p>
           </div>
       </div>
       </Container>

@@ -1,12 +1,58 @@
 .buttonc{
    
-    display: table;
+    display: block;
     margin: 0 auto;
    
-  
 }
 .instructioncards{
     display: flex;
-
     flex-direction: row;
+}
+
+.images{
+    width: 60%;
+    height: 40%;
+    display: block;
+    margin: 50px auto;
+   
+}
+
+.grid-text{
+    text-align: left;
+}
+.grid-item{
+    padding: 10px;
+}
+.how-works-layout{
+    display: grid;
+    margin-left: 150px;
+    margin-right: auto;
+    grid-template-columns:  repeat(2,500px);
+    grid-template-rows: repeat(2,300px);
+    align-items: center;
+}
+
+@media(max-width: 600px) {
+    .disclaimer{
+        border: 0.5px red solid;
+        padding:20px;
+        margin: 20px;
+        font-weight: bold;
+    }
+    .how-works-layout{
+        display: block;
+        margin-left: 10px;
+        margin-right: auto;
+       
+    }
+    .grid-item{
+        padding: 0px;
+     
+    }
+    .grid-text{
+        padding: 10px;
+        text-align: center;
+    }
+
+
 }
