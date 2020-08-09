@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -61,7 +61,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World! change the URL to hopefully see some json info.')
+  res.status(200).send('Hello World! change the URL to hopefully see some json info.')
 
 
 })
@@ -85,7 +85,6 @@ app.post('/api/sms', cors(), (req, res) => {
       .then(message => console.log(message.sid));
 })
 
-
 //This only works if you have twilio CLI installed (need a twilio account)
 // To get this functionality, you need to run this server
 // And then run this command: twilio phone-numbers:update "+15017122661" --sms-url="http://localhost:3000/api/sms"
@@ -100,6 +99,6 @@ app.post('/api/sms', cors(), (req, res) => {
 // });
 
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 })
