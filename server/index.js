@@ -9,10 +9,40 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 console.log(accountSid, authToken, twilioPhoneNumber)
+console.log()
 const client = require('twilio')(accountSid, authToken);
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
+// Configure Passport to use Auth0
+const strategy = new Auth0Strategy(
+  {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:
+      process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+  },
+  function (accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  }
+);
+
+passport.use(strategy);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
 
 app.use(bodyParser.json())
 app.use(
@@ -40,7 +70,7 @@ app.get('/api/sms', (req, res) => {
          body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
          from: '+16105954686',
          //Edit number here
-         to: '+----------'
+         to: req.body.mobile_number
        })
       .then(message => console.log(message.sid));
 })

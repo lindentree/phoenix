@@ -1,5 +1,10 @@
-import React from "react"
+import React from "react";
+import DistressSMS from "./distressSMS";
 
 export default function Home() {
-  return <div>Hello Auth0!</div>
+  return (
+    <DistressSMS />
+  
+  
+  )
 }
