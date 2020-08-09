@@ -1,0 +1,12 @@
+.buttonc{
+   
+    display: table;
+    margin: 0 auto;
+   
+  
+}
+.instructioncards{
+    display: flex;
+
+    flex-direction: row;
+}
