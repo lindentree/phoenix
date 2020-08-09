@@ -1,0 +1,60 @@
+.contents{
+    display: flex;
+    flex-direction: row;
+}
+.content-left{
+    padding: 150px;
+}
+ .content-right{
+     width: 100vw;
+    padding: 10px;
+}
+#howtext{
+
+}
+.input{
+    width: 46% ;
+}
+.submitbutton{
+    background-color: #DE6D5D;
+    border: none;
+    width: 128px;
+
+}
+.submitbutton:hover{
+    background-color: #d85847;
+  
+}
+.imgstyle{
+    display: block;
+    margin: 50px auto;
+
+}
+
+@media(max-width: 900px) {
+ 
+    
+    .contents{
+        display: block;
+    }
+    .content-left{
+        display: none;
+        padding: 10px;
+    }
+     .content-right{
+         width: auto;
+        padding: 10px;
+    }
+    .submitbutton{
+        background-color: #DE6D5D;
+        border: none;
+        display: block;
+       
+        margin: 0 auto;
+    
+    }
+    .input{
+        width: 100% ;
+    }
+
+}

@@ -1,7 +1,60 @@
-.buttonc{
+.button{
+   margin:auto ;
    
-    display: table;
-    margin: 0 auto;
-   
+
+}
+.buttongroup{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  width: 40%;
   
+
+}
+.organisationcards{
+    display: none;
+}
+.distance{
+    display: none;
+    
+}
+@media(max-width: 600px) {
+    .organisationcards{
+        display: block;
+    }
+ .card{
+        border-bottom:1px solid black ;
+        border-top:0;
+        border-right:0;
+        border-left:0;
+       margin-bottom: 50px;
+    }
+    .cardtext{
+        position: absolute;
+        left: 140px;
+        top:10px;
+        margin-left: 100px;
+        font-size: small;
+    }
+    .cardnum{
+        position: absolute;
+        left: 140px;       
+        margin-left: 100px;
+        font-size: small;
+    }
+    .title{
+       margin-right: 20px;
+    }
+
+    Table{
+        display: none;
+    }
+    .buttongroup{
+        display: block;
+    
+    }
+    .button{
+        margin:20px auto ;
+      
+     }
 }
