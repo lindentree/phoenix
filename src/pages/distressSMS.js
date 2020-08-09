@@ -8,8 +8,8 @@ const DistressSMS = () => {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = data => {
-        console.log("sanity", data.mobile_number )
-        axios.post('http://198.211.108.53:5000/api/sms', {
+        
+        axios.post('https://phoenix-server.xyz/api/sms', {
           params: {
             mobile_number: data.mobile_number,
             codeword: data.codeword 
