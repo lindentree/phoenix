@@ -37,8 +37,19 @@ if (app.get('env') === 'production') {
 app.use(session(sess));
 
 
+
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
+
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! change the URL to hopefully see some json info.')
+
+
 })
 
 app.get('/api/sms', (req, res) => {
