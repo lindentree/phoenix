@@ -3,16 +3,21 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const bodyParser = require('body-parser');
+
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
-console.log(accountSid, authToken, twilioPhoneNumber)
-console.log()
+
 const client = require('twilio')(accountSid, authToken);
 
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+
 
 // Configure Passport to use Auth0
 const strategy = new Auth0Strategy(
@@ -59,6 +64,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/sms', (req, res) => {
+
+  console.log('REQUEST', req.body)
   res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
   " soon be getting a message about the Kessel Run from a Twilio trial account.")
 
@@ -68,7 +75,7 @@ app.get('/api/sms', (req, res) => {
     client.messages
       .create({
          body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-         from: '+16105954686',
+         from: twilioPhoneNumber,
          //Edit number here
          to: req.body.mobile_number
        })
