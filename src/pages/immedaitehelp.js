@@ -20,7 +20,7 @@ class immediate extends React.Component{
         this.getCoordinates = this.getCoordinates.bind(this);
         this.getDistanceFromLatLonInKm = this.getDistanceFromLatLonInKm.bind(this);
         this.deg2rad = this.deg2rad.bind(this);
-       
+
     }
     getLocation() {
         if (navigator.geolocation) {
@@ -42,20 +42,24 @@ class immediate extends React.Component{
         return deg * (Math.PI/180)
       }
      getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+        if(lat2 === 90.0000 && lon2 === 135.0000)
+        {
+            return "online service";
+        }
         var R = 6371; // Radius of the earth in km
         var dLat = this.deg2rad(lat2-lat1);  // deg2rad below
-        var dLon =this.deg2rad(lon2-lon1); 
-        var a = 
+        var dLon =this.deg2rad(lon2-lon1);
+        var a =
           Math.sin(dLat/2) * Math.sin(dLat/2) +
-          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
+          Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
           Math.sin(dLon/2) * Math.sin(dLon/2)
-          ; 
-        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+          ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         var d = R * c; // Distance in km
         return Math.floor(d* 0.62137);
       }
-     
-     
+
+
 
     handleError(error) {
         switch(error.code) {
@@ -75,23 +79,23 @@ class immediate extends React.Component{
                 alert("Please reload the page");
         }
       }
-   
+
 
     render(){
         return (
             <div>
                  <Header></Header>
-    
+
     {/* Home page contents */}
     <div>
-    <Container > 
-      
+    <Container >
+
       <div>
           <h2 className="text-center mt-5 mb-5">Immediate Help</h2>
           <h4 className="text-center mt-5 mb-5">Please call 911 immediately if this is an emergency</h4>
           <div>
-              <div className=" buttongroup mt-5 mb-5"> 
-                <Button className="button" onClick={this.getLocation}>Get My get Location</Button>
+              <div className=" buttongroup mt-5 mb-5">
+                <Button className="button" onClick={this.getLocation}>Get My Location</Button>
               <Button variant="primary"  >Search Organisation </Button>
               </div>
               <div>
@@ -99,8 +103,8 @@ class immediate extends React.Component{
                 {data.map( data => {
                         return(
                             <Card className="p-1 card text-left">
-                            <Card.Title> 
-                           < span className="title">{data.name}</ span> 
+                            <Card.Title>
+                           < span className="title">{data.name}</ span>
                             <span className="cardtext">
                               {this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.lat,data.long)} m</span>
                               </Card.Title>
@@ -108,21 +112,24 @@ class immediate extends React.Component{
                                <p>{data.address}</p>
                                <p><a href="#">Get Directions</a> <span className="cardnum">  {data.contact}</span></p>
                             <p></p>
-                            
+
                             </Card.Body>
                             </Card>
                         )
                     })}
                 </div>
-            
+
               <Table striped bordered hover size="sm">
-        
+
                 <thead>
                     <tr>
                     <th>Organisation Name</th>
-                    <th>Address</th>
+                    <th>Service Area</th>
+                    <th>Service Type</th>
+                    <th>Website</th>
                     <th>Phone Number</th>
                     <th>Miles</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -130,14 +137,16 @@ class immediate extends React.Component{
                         return(
                             <tr>
                             <td>{data.name}</td>
-                             <td>{data.address}</td>
-                            <td>{data.contact}</td>
-                            <td >{this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.lat,data.long)}</td>
-                            
+                             <td>{data.locality}</td>
+                             <td>{data.service_type}</td>
+                             <td>{data.website}</td>
+                            <td>{data.phone_number}</td>
+                            <td >{this.getDistanceFromLatLonInKm(this.state.latitude,this.state.longitude,data.latitude,data.longitude)}</td>
+
                             </tr>
                         )
                     })}
-                    
+
                 </tbody>
                 </Table>
               </div>
@@ -150,5 +159,5 @@ class immediate extends React.Component{
             </div>
         );
     }
-} 
+}
 export default immediate;
