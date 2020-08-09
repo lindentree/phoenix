@@ -1,30 +1,179 @@
 
  [
+
    {
-    "name":"Naree Help",
-    "address":"Bikaner",
-    "miles":"2 miles",
-    "contact":220404,
-    "lat":37642768,
-    "long":6327648
-    },
-    
-    {
-        "name":"Shero",
-        "address":"New York",
-        "miles":"4 miles",
-        "contact":2241297,
-        "lat":37642768,
-        "long":6327648
-        
-    },
-    {
-        "name":"Safe Horizon",
-        "address":"Brooklyn",
-        "miles":"6 miles",
-        "contact": 1800733,
-        "lat":37642768,
-    "long":6327648
-    }
+   "name": "National Domestic Violence Hotline",
+   "website": "https://www.thehotline.org",
+   "phone_number": "1-800-799-7233, or text LOVIS to 22522",
+   "service_type": "contact advocate",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "call advocate;text advocate;live chat;safety planning;education;legal information;quick leave site"
+ },
+
+   {
+   "name": "Love is Respect",
+   "website": "https://www.loveisrespect.org",
+   "phone_number": "1-866-331-9474, or Text loveis to 22522",
+   "service_type": "contact advocate",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "call advocate;text advocate;live chat;safety planner;education;legal information;quick leave site"
+ },
+
+
+ {
+   "name": "Women's Law",
+   "website": "https://www.womenslaw.org",
+   "phone_number": "N/A",
+   "service_type": "database",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "find advocates and shelters;legal information;education;quick leave site"
+ },
+ {
+   "name": "Domestic Shelters",
+   "website": "https://www.domesticshelters.org",
+   "phone_number": "N/A",
+   "service_type": "database",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "find nearby shelters"
+ },
+ {
+   "name": "Women's Shelters",
+   "website": "https://www.womenshelters.org",
+   "phone_number": "N/A",
+   "service_type": "database",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "find emergency shelters;domestic violence shelters;transitional housing;family shelters"
+ },
+
+       {
+   "name": "National Coaliton Against Domestic Violence",
+   "website": "https://ncadv.org/resources",
+   "phone_number": "N/A",
+   "service_type": "database",
+   "locality": "United States",
+   "zip_code": "N/A",
+   "latitude": 90.0000,
+   "longitude": 135.0000,
+   "key_features": "phone numbers and websites for specific needs"
+ },
+
+
+ {
+   "name": "Elizabeth House",
+   "website": "https://www.elizabethhouse.net",
+   "phone_number": "1-626-577-4434",
+   "service_type": "accommodation",
+   "locality": "California",
+   "zip_code": "91109-4077",
+   "latitude": 34.15546,
+   "longitude": -118.134806,
+   "key_features": "emergency shelter"
+ },
+
+
+ {
+   "name": "A Community for Peace",
+   "website": "https://acommunityforpeace.org/get-help/emergency-shelter",
+   "phone_number": "Office line: 1-916-728-5613, Crisis line: 1-916-728-7210",
+   "service_type": "contact advocate, immediate safety",
+   "locality": "California",
+   "zip_code": "95821;95817",
+   "latitude": 38.621949,
+   "longitude": -121.40173,
+   "key_features": "emergency shelter;call advocate;education"
+ },
+ {
+   "name": "Alliance Against Family Violence and Sexual Assault",
+   "website": "https://kernalliance.org",
+   "phone_number": "Toll free 1-800-273-7713, Crisis line 1-661-327-1091",
+   "service_type": "contact advocate, immediate safety",
+   "locality": "California",
+   "zip_code": "93301",
+   "latitude": 35.376168,
+   "longitude": -119.024105,
+   "key_features": "call advocate;emergency shelter;transitional housing;counseling appointments;quick leave site"
+ },
+ {
+   "name": "A Safe Place",
+   "website": "https://www.asafeplace.org",
+   "phone_number": "1-510-536-7233",
+   "service_type": "contact advocate",
+   "locality": "California",
+   "zip_code": "94623-0006",
+   "latitude": 37.804951,
+   "longitude": -122.299034,
+   "key_features": "emergency shelter;emergency transport;emergency food and clothing;panic button;safety planner"
+ },
+
+ {
+   "name": "Domestic Violence Resource Center",
+   "website": "https://www.dvrc-or.org",
+   "phone_number": "Crisis line: 1-503-469-8620, Crisis line: 1-866-469-8600",
+   "service_type": "accommodation",
+   "locality": "Oregon, Washington",
+   "zip_code": "97006",
+   "latitude": 45.514051,
+   "longitude": -122.840867,
+   "key_features": "emergency shelter;transitional housing;safety planning;quick leave site"
+ },
+ {
+   "name": "Haven Live Without Fear",
+   "website": "https://www.haven-oakland.org",
+   "phone_number": "Crisis line: 1-248-334-1274, Toll free crisis line: 1-877-922-1274",
+   "service_type": "contact advocate",
+   "locality": "Michigan",
+   "zip_code": "48341",
+   "latitude": 42.659884,
+   "longitude": -83.396977,
+   "key_features": "emergency shelter;legal information;education"
+ },
+ {
+   "name": "New Destiny Housing",
+   "website": "https://newdestinyhousing.org",
+   "phone_number": "Office line: 1-646-472-0262, Crisis line: 1-800-621-4673",
+   "service_type": "accommodation",
+   "locality": "New York",
+   "zip_code": "10018",
+   "latitude": 40.75055,
+   "longitude": -73.98425,
+   "key_features": "emergency shelter;housing transfers;rental subsidies"
+ },
+ {
+   "name": "Florida Department of Children and Families",
+   "website": "https://www.myflfamilies.com/service-programs/domestic-violence",
+   "phone_number": "1-800-500-1119",
+   "service_type": "database",
+   "locality": "Florida",
+   "zip_code": "N/A",
+   "latitude": 27.6648,
+   "longitude": 81.5158,
+   "key_features": "legal information;find local services;emergency shelter;quick leave site"
+ },
+ {
+   "name": "Peaceful Paths",
+   "website": "https://www.peacefulpaths.org",
+   "phone_number": "1-352-377-8255",
+   "service_type": "contact advocate",
+   "locality": "Florida",
+   "zip_code": "32653",
+   "latitude": 29.741784,
+   "longitude": -82.425476,
+   "key_features": "call advocate;emergency shelter;quick leave site"
+ }
 
  ]
