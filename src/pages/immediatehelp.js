@@ -90,8 +90,8 @@ class Immediate extends React.Component{
           <h2 className="text-center mt-5 mb-5">Immediate Help</h2>
           <h4 className="text-center mt-5 mb-5">Please call 911 immediately if this is an emergency</h4>
           <div>
-              <div className=" buttongroup mt-5 mb-5"> 
-                <Button className="button" onClick={this.getLocation}>Get My get Location</Button>
+              <div className=" buttongroup mt-5 mb-5">
+                <Button className="button" onClick={this.getLocation}>Provide Location</Button>
               <Button variant="primary"  >Search Organisation </Button>
               </div>
               <div>
