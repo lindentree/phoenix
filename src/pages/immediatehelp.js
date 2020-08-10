@@ -4,7 +4,7 @@ import {Container,Table, Button, Card}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
 import data from '../../shelteinfo.json';
 import  '../../static/css/immediate.css';
-class immediate extends React.Component{
+class Immediate extends React.Component{
 
     constructor(props){
         super(props);
@@ -151,4 +151,4 @@ class immediate extends React.Component{
         );
     }
 } 
-export default immediate;
+export default Immediate;

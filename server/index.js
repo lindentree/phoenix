@@ -71,8 +71,7 @@ app.post('/api/sms', cors(), (req, res) => {
   const to_number = '+1' + req.body.params.mobile_number;
 
   const codeword = req.body.params.codeword;
-  res.send("Welcome to the Twilio experiment page. If you've put in your phone number, you should" +
-  " soon be getting a message about the Kessel Run from a Twilio trial account.")
+  res.send(200)
 
     //Change the to: "+----------" to your own phone number. Keep the same formatting of
     //[+][country code][phone number including area code]
@@ -85,6 +84,13 @@ app.post('/api/sms', cors(), (req, res) => {
          to: to_number
        })
       .then(message => console.log(message.sid));
+})
+
+
+app.post('api/register_contacts', (req, res) => {
+
+
+
 })
 
 //This only works if you have twilio CLI installed (need a twilio account)

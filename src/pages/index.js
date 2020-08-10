@@ -1,6 +1,6 @@
 import React from "react";
 import  'bootstrap/dist/css/bootstrap.min.css';
-import {Container,CardDeck , Card, Button}  from 'react-bootstrap';
+import {Container, CardDeck, Card, Button}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
     <Card.Img variant="top" className="images"   src="https://dummyimage.com/190x190/8f888f/fff" />
     <Card.Body>
       <Card.Title> 
-      <Button variant="primary" href="immedaitehelp" size="lg">Immediate Help</Button>
+      <Button variant="primary" href="immediatehelp" size="lg">Immediate Help</Button>
     </Card.Title>
       <Card.Text>
       Find immediate resources to help you find local shelters and phone numbers you can call. 
@@ -47,7 +47,7 @@ export default function Home() {
   <h3 className="text-center mt-5 mb-5">How does it work ?</h3>
 <div className="how-works-layout">
 <p className="grid-item grid-text">Select the button the top right hand corner to hide this page. 
-We recommend using this site in incongnito mode.</p>
+We recommend using this site in incognito mode.</p>
 <img className="grid-item images"   src="https://dummyimage.com/190x190/8f888f/fff" />
 <p className="grid-item grid-text">Send a message to all of your emergency contacts all at once by selecting ‘Log In’
  if you or your loved ones feel threatened</p>
