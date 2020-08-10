@@ -3,6 +3,10 @@ import  'bootstrap/dist/css/bootstrap.min.css';
 import {Container, CardDeck, Card, Button}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
 
+import resources from "../assets/resources.png"; // Tell webpack this JS file uses this image
+import contacts from "../assets/contacts.png"; 
+
+
 export default function Home() {
   
   return ( 
@@ -13,7 +17,7 @@ export default function Home() {
     <Container>
   <CardDeck className=" text-center">
   <Card className="border-0">
-    <Card.Img variant="top" className="images"   src="https://dummyimage.com/190x190/8f888f/fff" />
+    <Card.Img variant="top" className="images"   src={resources} />
     <Card.Body>
       <Card.Title> 
       <Button variant="primary" href="immediatehelp" size="lg">Immediate Help</Button>
@@ -27,7 +31,7 @@ export default function Home() {
     </Card.Body>
   </Card>
   <Card className="border-0">
-    <Card.Img variant="top" className="images"  src="https://dummyimage.com/100x100/8f888f/fff" />
+    <Card.Img variant="top" className="images"  src={contacts} />
     <Card.Body>
       <Card.Title > 
         <Button variant="primary" size="lg"  href="emergencycontact">Emergency Contacts</Button></Card.Title>
@@ -48,7 +52,7 @@ export default function Home() {
 <div className="how-works-layout">
 <p className="grid-item grid-text">Select the button the top right hand corner to hide this page. 
 We recommend using this site in incognito mode.</p>
-<img className="grid-item images"   src="https://dummyimage.com/190x190/8f888f/fff" />
+<img className="grid-item images"   src="./assets/resources.png" />
 <p className="grid-item grid-text">Send a message to all of your emergency contacts all at once by selecting ‘Log In’
  if you or your loved ones feel threatened</p>
 <img className="grid-item images"   src="https://dummyimage.com/190x190/8f888f/fff" />
