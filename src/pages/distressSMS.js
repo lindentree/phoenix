@@ -32,7 +32,7 @@ const DistressSMS = () => {
     
       <input type="tel" placeholder="Mobile number" name="mobile_number" ref={register({required: true, minLength: 6, maxLength: 12})} />
 
-      <input type="text" placeholder="Codeword" name="codeword" ref={register({required: true})} />
+      <input type="text" placeholder="Your codeword" name="codeword" ref={register({required: true})} />
 
 
       <input type="submit" />

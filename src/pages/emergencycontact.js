@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 import  'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form ,Row,Col, Button}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
@@ -7,7 +9,28 @@ import  '../../static/css/index.css';
 
 
 
-const emergency = ()=>{
+const Emergency = () => {
+
+    const { register, handleSubmit, errors } = useForm();
+
+    const onSubmit = data => {
+        
+        axios.post('https://phoenix-server.xyz/api/sms', {
+          params: {
+            mobile_number: data.mobile_number,
+            codeword: data.codeword 
+          }
+           
+    
+        })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        console.log(errors);
+    }
 
    
     return (
@@ -34,8 +57,8 @@ const emergency = ()=>{
            your contacts will be immediately notified by text that you are in need of help the moment you log-in  
           </p>
 
-          <div className="form">
-            <Form>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Form >
                 <Row className="mb-3">
                     <Col >
                     <label>Your Phone Number: (Your log-in user ID)</label>
@@ -45,36 +68,36 @@ const emergency = ()=>{
                 <p>Emergency Contact 1*</p>
                 <Row className="mb-3">
                     <Col>
-                    <Form.Control type="contact" placeholder="Phone Number" />
+                    <Form.Control type="tel" placeholder="Mobile number" name="mobile_number" ref={register({required: true, minLength: 6, maxLength: 12})} />
                     </Col>
-                <Col>                
+                {/* <Col>                
                     <Form.Control name="email" type="email" placeholder="Email" />
-                    </Col>
+                    </Col> */}
                 </Row>
-                <p>Emergency Contact 2*</p>
+                {/* <p>Emergency Contact 2*</p>
                 <Row className="mb-5">
                     <Col>
-                    <Form.Control type="contact" placeholder="Phone Number" />
+                    <Form.Control type="tel" placeholder="Mobile number" name="mobile_number" ref={register({required: true, minLength: 6, maxLength: 12})} />
                     </Col>
                 <Col>
                 
                     <Form.Control name="email" type="email" placeholder="Email" />
                     </Col>
                 </Row>
-                
-                <Row className="mb-5">
-                <a href="#" className="buttonc">Add another contact</a>
-                </Row>
+                 */}
+           
                 <Row className="mb-5"> 
                 <Col>
                 <p> Your emergency code word (Please share this with your contacts):</p>
-                    <Form.Control type="number" placeholder="Your personal code" />
-                    <small> <a href="#" className="text-decoration-none">What is this for</a></small>
+                    <Form.Control type="text" placeholder="Your codeword" name="codeword" ref={register({required: true})} />
+                    {/* <small> <a href="#" className="text-decoration-none">What is this for?</a></small> */}
                     </Col>
                 </Row>
-                <Button className="submitbutton" href="setupcomplete">Submit</Button>
+             
+                <input type="submit" href="setupcomplete"/>
+                   
             </Form>
-         </div>
+         </form>
           </div>
           
          
@@ -87,4 +110,4 @@ const emergency = ()=>{
 }
 
 
-export default emergency;
+export default Emergency;
