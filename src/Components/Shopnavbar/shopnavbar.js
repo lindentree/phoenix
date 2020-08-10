@@ -3,8 +3,8 @@ import { Container ,Navbar, Nav, Button } from 'react-bootstrap';
 import { DropdownButton ,Dropdown } from 'react-bootstrap';
 import  '../../../static/css/index.css';
 // import { Link } from "gatsby";
-export default function navbar(props) {
-    const logo = "Peace";
+export default function shopnavbar(props) {
+    const logo = "ATHENA BOOKS";
   return (
   <div>
       <header  className="border-bottom">
@@ -25,7 +25,7 @@ export default function navbar(props) {
                         <Button>Sign Up</Button>
                     </Nav.Item>
                     <Nav.Item as="li" className="ml-4 mt-2 mb-2">
-                    <Button  href="Shop" type="submit">Hide Page</Button>
+                    <Button  href="/" type="submit"> Change Page</Button>
                     </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
@@ -33,9 +33,7 @@ export default function navbar(props) {
         </Container>
        
       </header>
-      <p className="mt-5 mb-5 text-center disclaimer" >
-        Disclaimer: In case of an emergency, please call 911 immediately. This site does not replace emergency services.
-      </p>
+      
   </div>
   );
 }
