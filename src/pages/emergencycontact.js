@@ -6,6 +6,8 @@ import {Container,Form ,Row,Col, Button}  from 'react-bootstrap';
 import Header from '../Components/Navbar/navbar';
 import  '../../static/css/emergency.css';
 import  '../../static/css/index.css';
+import phone from "../assets/phone.png"; 
+
 
 
 
@@ -42,7 +44,7 @@ const Emergency = () => {
       <div className="contents">
           <div className="content-left ">
               <h5 className="text-center">How does this work?</h5>
-              <img  className="imgstyle" src="https://dummyimage.com/190x190/8f888f/fff"/>
+              <img  className="imgstyle" src={phone}/>
               <p id="howtext">By filling out the form, this site temporarily stores your contacts.
              </p>
               <p> Next time you select ‘Log In’ and input your number, 
